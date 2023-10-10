@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "build": "cd client && npm run build",
+    "build": "npm run build",
     "client-install": "cd client && npm install", 
     "heroku-postbuild": "npm run client-install && npm run build"
   },
