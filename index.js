@@ -6,7 +6,7 @@ const { Server } = require("socket.io");
 const dotenv = require("dotenv");
 const { connection } = require("./database/db.js");
 
-//events
+// Events
 const { createChat } = require("./event/createChat.js");
 const { messageSend } = require("./event/messageSend.js");
 const { onConnection } = require("./event/onConnection.js");
@@ -18,23 +18,28 @@ dotenv.config();
 const PORT = process.env.PORT || 3001;
 const DB_USER = process.env.DB_USER;
 const DB_PASS = process.env.DB_PASS;
+const FRONTEND_ORIGIN = "https://encircle-test2-app.netlify.app"; // Replace with your frontend's URL
 
-app.use(cors());
+app.use(cors({
+    origin: FRONTEND_ORIGIN,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true, // If you need to support cookies or authentication headers
+}));
 
 const server = http.createServer(app);
 connection(DB_USER, DB_PASS);
 
 const io = new Server(server, {
     cors: {
-        origin: "*",
+        origin: FRONTEND_ORIGIN,
     },
 });
 
 let userCount = 0;
 
 app.use("/server", (req, res) => {
-    res.send({response: "Server running!"}).status(200)
-} )
+    res.send({ response: "Server running!" }).status(200);
+});
 
 io.on("connection", (socket) => {
     const { user, newUserCount } = onConnection(socket, userCount);
@@ -54,10 +59,10 @@ io.on("connection", (socket) => {
     });
 });
 
-//deployment
-console.log(process.env.NODE_ENV)
+// Deployment
+console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === "production") {
-    console.log("Connecting front-end...")
+    console.log("Connecting front-end...");
     app.use(express.static("client/build"));
 }
 
