@@ -1,6 +1,6 @@
 import io from "socket.io-client";
 
-let SERVER_URL = "https://encircle-test-app.vercel.app/";
+let SERVER_URL = "https://encircle-backend.onrender.com/";
 
 console.log("Node environment:", process.env.NODE_ENV)
 if (process.env.NODE_ENV !== "production"){
