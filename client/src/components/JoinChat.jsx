@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useStore } from "../zustand/store";
 import shallow from "zustand/shallow";
-import { Button, Grid } from "@mui/material";
+import { Button, Grid, TextField } from "@mui/material";
 import Description from "./Description";
 
 import Welcome from "../components/Welcome";
@@ -18,6 +18,12 @@ export const JoinChat = () => {
     const setChat = useStore((state) => state.setChat);
     const socket = useStore((state) => state.socket);
 
+    const [interests, setInterests] = useState("");
+    const [time, setTime] = useState("");
+    const [degree, setDegree] = useState("");
+
+
+
     useEffect(() => {
         socket.on("user_count", (data) => {
             console.log("user count run in join chat");
@@ -32,7 +38,17 @@ export const JoinChat = () => {
                     x: pos.coords.longitude,
                     y: pos.coords.latitude,
                 };
-                await socket.emit("create_chat", location);
+
+                // Combine user data with interests
+                const userData = {
+                    x: location.x,
+                    y: location.y,
+                    interests,
+                    time,
+                    degree,
+                };
+
+                await socket.emit("create_chat", userData);
                 setChat(true);
             });
         } else {
@@ -65,12 +81,32 @@ export const JoinChat = () => {
                 <Description />
             </Grid>
             <Grid>
-                {!user ? (
+            {!user ? (
                     <p className="text-bold text-[2rem] lg:text-[2rem]">Please sign in to start a chat.</p>
                 ) : (
-                    <Button variant="contained" onClick={joinChat} className="w-56">
-                        Start chat
-                    </Button>
+                    <div>
+                        {/* Add a text input for interests */}
+                        <TextField
+                            label="Subject Interest"
+                            value={interests}
+                            onChange={(e) => setInterests(e.target.value)}
+                        />
+                        {/* Add a text input for degree */}
+                        <TextField
+                            label="Degree Preferred"
+                            value={degree}
+                            onChange={(e) => setDegree(e.target.value)}
+                        />
+                        <TextField
+                            label="Time for Lecture"
+                            value={time}
+                            onChange={(e) => setTime(e.target.value)}
+                        />
+
+                        <Button variant="contained" onClick={joinChat} className="w-56">
+                            Start chat
+                        </Button>
+                    </div>
                 )}
             </Grid>
         </Grid>

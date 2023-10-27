@@ -3,7 +3,10 @@ const mongoose = require("mongoose")
 const userSchema = mongoose.Schema({
     socketID: String,
     x: String,
-    y: String
+    y: String,
+    interests: String,
+    time: String,
+    degree: String,
 });
 
 const activeUser = mongoose.model('activeUser', userSchema);

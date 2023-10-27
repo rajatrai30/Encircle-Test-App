@@ -20,10 +20,12 @@ const findAvailableUser = async (user) => {
             parseFloat(dbUser.y),
             parseFloat(dbUser.x)
         );
-        return dist<15 && dbUser.socketID != user.socketID;
+        // const hasMatchingInterests = interests && dbUser.interests === interests;
+        // return dist < 15 && dbUser.socketID !== user.socketID && hasMatchingInterests;
+        return dist<15 && dbUser.socketID != user.socketID && dbUser.interests == user.interests && dbUser.time == user.time && dbUser.degree == user.degree;
     });
 
-    return closeByUser; 
+    return closeByUser;
 };
 
 module.exports = { findAvailableUser };

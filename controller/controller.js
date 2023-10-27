@@ -5,6 +5,7 @@ const addUser = async (user) => {
     try {
         const user = await newUser.save();
         console.log("User added", user);
+        return newUser;
     } catch (err) {
         console.log("Error saving user:", err);
     }
@@ -45,8 +46,10 @@ const addUserToBusy = async (user) => {
     try {
         const user = await newUser.save();
         console.log("Moved user to busy", user);
+        return user;
     } catch (err) {
         console.log("Error moving user to busy:", err);
+        return null;
     }
     return user;
 };

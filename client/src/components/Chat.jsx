@@ -17,7 +17,6 @@ import {
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import "./Chat.css";
-import { useNavigate } from "react-router-dom";
 
 // ANONYMOUS DATA HANDLING
 import AnonymousUser from "./AnonymousUser";
@@ -27,7 +26,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 // LOTTIE REACT ANIMATION
 import PreLoader from "./PreLoader/PreLoader";
 
-function Chat() {
+function Chat(props) {
   const [user] = useAuthState(auth);
   // const [chat, setChat] = useState(false);
   // const [allMessage, setAllMessage] = useState([]);
