@@ -8,6 +8,10 @@ import Welcome from "../components/Welcome";
 import User from "../components/User";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import IconButton from "@mui/material/IconButton";
+import AddIcon from "@mui/icons-material/Add";
+
+
 
 export const JoinChat = () => {
     const [user] = useAuthState(auth);
@@ -18,9 +22,11 @@ export const JoinChat = () => {
     const setChat = useStore((state) => state.setChat);
     const socket = useStore((state) => state.socket);
 
-    const [interests, setInterests] = useState("");
+    // const [interests, setInterests] = useState("");
+    const [subjects, setSubjects] = useState([""]);
     const [time, setTime] = useState("");
     const [degree, setDegree] = useState("");
+    const maxSubjects = 5;
 
 
 
@@ -43,7 +49,7 @@ export const JoinChat = () => {
                 const userData = {
                     x: location.x,
                     y: location.y,
-                    interests,
+                    subjects,
                     time,
                     degree,
                 };
@@ -55,6 +61,17 @@ export const JoinChat = () => {
             alert("Your location is not available");
         }
     };
+    const updateSubject = (index, value) => {
+        const updatedSubjects = [...subjects];
+        updatedSubjects[index] = value;
+        setSubjects(updatedSubjects);
+    };
+    const addSubject = () => {
+        if (subjects.length < maxSubjects) {
+            setSubjects([...subjects, ""]);
+        }
+    };
+    
 
     return (
         <Grid
@@ -86,11 +103,20 @@ export const JoinChat = () => {
                 ) : (
                     <div>
                         {/* Add a text input for interests */}
-                        <TextField
-                            label="Subject Interest"
-                            value={interests}
-                            onChange={(e) => setInterests(e.target.value)}
-                        />
+                        {subjects.map((subject, index) => (
+                            <div key={index}>
+                                <TextField
+                                    label={`Subject ${index + 1}`}
+                                    value={subject}
+                                    onChange={(e) => updateSubject(index, e.target.value)}
+                                />
+                            </div>
+                        ))}
+                        {subjects.length < maxSubjects && (
+                            <IconButton onClick={addSubject}>
+                                <AddIcon />
+                            </IconButton>
+                        )}
                         {/* Add a text input for degree */}
                         <TextField
                             label="Degree Preferred"

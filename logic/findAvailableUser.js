@@ -22,7 +22,10 @@ const findAvailableUser = async (user) => {
         );
         // const hasMatchingInterests = interests && dbUser.interests === interests;
         // return dist < 15 && dbUser.socketID !== user.socketID && hasMatchingInterests;
-        return dist<15 && dbUser.socketID != user.socketID && dbUser.interests == user.interests && dbUser.time == user.time && dbUser.degree == user.degree;
+        // return dist<15 && dbUser.socketID != user.socketID && dbUser.interests == user.interests && dbUser.time == user.time && dbUser.degree == user.degree;
+
+        const hasMatchingSubject = user.subjects && user.subjects.some((subject) => dbUser.subjects.includes(subject));
+        return dist < 15 && dbUser.socketID !== user.socketID && hasMatchingSubject;
     });
 
     return closeByUser;

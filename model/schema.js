@@ -4,7 +4,7 @@ const userSchema = mongoose.Schema({
     socketID: String,
     x: String,
     y: String,
-    interests: String,
+    subjects: [String], // Allow for an array of subjects
     time: String,
     degree: String,
 });
