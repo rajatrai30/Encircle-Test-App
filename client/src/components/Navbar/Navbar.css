@@ -1,0 +1,40 @@
+.NavRoot {
+  display: flex;
+  box-shadow: none;
+  background-color: #9ACED1;
+}
+
+.css-hip9hq-MuiPaper-root-MuiAppBar-root {
+  background-color: #9ACED1;
+}
+
+.NavContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 130px;
+}
+
+@media screen and (max-width: 600px) {
+  .NavContainer {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .NavContainer > * {
+    margin-bottom: 10px;
+  }
+  .sign-out{
+    color: red;
+  }
+
+  .sign-out,
+  .sign-in {
+    margin-top: 10px;
+  }
+
+}

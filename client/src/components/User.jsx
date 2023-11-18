@@ -3,7 +3,7 @@ import "./User.css";
 
 function User({ avatar, name, email, location }) {
   return (
-    <div className="UserComponent text-[2rem]">
+    <div className="UserComponent">
       <div className="AvatarColumn">
         <img src={avatar} alt="User Avatar" />
       </div>

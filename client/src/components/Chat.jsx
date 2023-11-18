@@ -26,12 +26,17 @@ import { useAuthState } from "react-firebase-hooks/auth";
 // LOTTIE REACT ANIMATION
 import PreLoader from "./PreLoader/PreLoader";
 
+// Connection Request Modal
+import ConnectionModal from "./ConnectionModal";
+
 function Chat(props) {
   const [user] = useAuthState(auth);
   // const [chat, setChat] = useState(false);
   // const [allMessage, setAllMessage] = useState([]);
   // const [userCount, setUserCount] = useState(0);
-  //const [chatAlive, setChatAlive] = useState(true);
+  // const [chatAlive, setChatAlive] = useState(true);
+
+  const [openModal, setOpenModal] = useState(true);
 
   //global states
   const [allMessage, setAllMessage, clearAllMessage] = useStore(
@@ -121,6 +126,7 @@ function Chat(props) {
       socket.on("2nd_user", (data) => {
         setSecondUser(data);
         secondUserRef.current = data;
+        setOpenModal(true);
       });
     }
     //else check, if you are the second user yourself in which case your second user is the room which is first user
@@ -211,12 +217,33 @@ function Chat(props) {
       );
     }
   });
-
   console.log("chat room:", chatRoom);
 
+  const handleAccept = () => {
+    setOpenModal(false);
+    // setConnectionAccepted(true);
+    // setConnectionAccepted(true);
+    socket.emit("accept_connection", chatRoom);
+  };
+
+  const handleReject = () => {
+    setOpenModal(false);
+    handleClick();
+  };
+
   return (
-    <Container>
+    <Container id="chatId">
       {/* Anonymous User Container */}
+
+      {secondUser && (
+        <ConnectionModal
+          open={openModal}
+          onClose={handleReject}
+          onAccept={handleAccept}
+          onReject={handleReject}
+          secondUserData={secondUser}
+        />
+      )}
       <Paper elevation={5}>
         <Box p={3} marginY={3}>
           <Typography>
@@ -236,7 +263,7 @@ function Chat(props) {
           {secondUser ? null : <PreLoader />}
           {chatAlive && (
             <Button
-			  className="w-56"
+              className="w-56"
               variant="outlined"
               color="error"
               size="small"

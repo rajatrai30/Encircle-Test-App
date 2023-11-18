@@ -1,0 +1,38 @@
+/* Logo.css */
+
+.image {
+  width: 100px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+
+.Iconlogo {
+  text-decoration: none;
+}
+
+.Iconlogo a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Iconlogo img {
+  width: 10rem;
+}
+
+@media screen and (min-width: 600px) {
+  .Iconlogo img {
+    width: 10rem; /* Adjust the width as needed */
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .Iconlogo img {
+    width: 100%; /* Adjust the width as needed */
+  }
+}
+
+.Iconlogo svg {
+  font-size: 1.25rem; /* Equivalent to theme.spacing(5) in MUI */
+  color: blue; /* Replace with the actual color */
+}

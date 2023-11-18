@@ -11,8 +11,9 @@ const Welcome = () => {
 
   return (
     <main className="welcome flex flex-col items-center justify-center">
-      <h2 className="text-[4rem] lg:text-[2rem]">EnCircle Test App</h2>
-      <p className="text-[2rem] lg:text-[1rem]">In this test App, we try to get data(userdata) of <br/> the user who is present in our nearby location</p>
+      <h2 className="text-[3.5rem] lg:text-[2rem]">
+        EnCircle - Your Multiservice Finder App
+      </h2>
       <button className="sign-in">
         <img
           onClick={googleSignIn}
