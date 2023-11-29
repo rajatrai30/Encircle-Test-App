@@ -26,8 +26,8 @@ dotenv.config();
 const PORT = process.env.PORT || 3001;
 const DB_USER = process.env.DB_USER;
 const DB_PASS = process.env.DB_PASS;
-// const FRONTEND_ORIGIN = "https://encircle-test2-app.netlify.app";
-const FRONTEND_ORIGIN = "http://localhost:3000";
+const FRONTEND_ORIGIN = "https://encircle-test2-app.netlify.app";
+// const FRONTEND_ORIGIN = "http://localhost:3000";
 
 app.use(
   cors({
