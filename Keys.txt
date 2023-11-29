@@ -1,0 +1,7 @@
+// admin.initializeApp({
+//   credential: admin.credential.cert(servicAccount),
+// });
+
+// const publicKey =
+//   "BI6fnJKRZVp7OU93erOPSBBfQHSVVYf74B8vJLOE6gNBo1NyRuwOBg7Xs7mKIjpSXmb3nSyC4r0nlhTPcgG5y1Q";
+// const privateKey = "yDcLP7l8GOTFCPIqtw6R3-sT3p21QIruR_8A5SWHVG4";

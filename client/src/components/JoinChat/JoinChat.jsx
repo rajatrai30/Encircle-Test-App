@@ -7,7 +7,7 @@ import "./JoinChat.css";
 
 import Welcome from "../Welcome";
 import User from "../User";
-import { auth } from "../../firebase";
+import { auth, getToken, messaging } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
@@ -47,28 +47,53 @@ export const JoinChat = () => {
         alert("Please login to continue");
         return;
       }
-      await navigator.geolocation.getCurrentPosition(async (pos) => {
-        const location = {
-          x: pos.coords.longitude,
-          y: pos.coords.latitude,
-        };
 
-        // Combine user data with interests
-        const userData = {
-          x: location.x,
-          y: location.y,
-          subjects,
-          time,
-          degree,
-        };
+      // Request notification permission
+      try {
+        const permission = await Notification.requestPermission();
+        if (permission === "granted") {
+          // Get FCM token
+          const currentToken = await getToken(messaging, {
+            vapidKey:
+              "BG7RsoUEPCVeSSN9h8kTzKhKeGOAu2QnlFFneCaXKAf_iW0j_Vs-gGSw9gSt10TyD19H0GIdE65c81xsy44Bnsw",
+          });
 
-        await socket.emit("create_chat", userData);
-        setChat(true);
-      });
+          console.log(currentToken);
+
+          // Send FCM token to the server
+          await socket.emit("store_fcm_token", { fcmToken: currentToken });
+
+
+          await navigator.geolocation.getCurrentPosition(async (pos) => {
+            const location = {
+              x: pos.coords.longitude,
+              y: pos.coords.latitude,
+            };
+
+            // Combine user data with interests
+            const userData = {
+              x: location.x,
+              y: location.y,
+              subjects,
+              fcmToken: currentToken,
+              time,
+              degree,
+            };
+
+            await socket.emit("create_chat", userData);
+            setChat(true);
+          });
+        } else if (permission === "denied") {
+          console.error("Notification permission denied.");
+        }
+      } catch (error) {
+        console.error("Error requesting notification permission:", error);
+      }
     } else {
       alert("Your location is not available");
     }
   };
+
   const updateSubject = (index, value) => {
     const updatedSubjects = [...subjects];
     updatedSubjects[index] = value;
