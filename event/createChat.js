@@ -25,7 +25,7 @@ const createChat = async (socket, data, user) => {
     const titleToSecondUser = "New Chat Request";
     const bodyToSecondUser = "wants to chat with you";
     const imageToSecondUser = "https://rajat.engineer/static/media/profileImg.4a5ed4206aa46ec7703f.jpg";
-    const click_action = "/chat";
+    const click_action = "/";
 
     console.log("fcmToken: ", fcmTokenForSecondUser);
 

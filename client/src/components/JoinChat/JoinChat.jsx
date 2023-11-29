@@ -59,6 +59,7 @@ export const JoinChat = () => {
           });
 
           console.log(currentToken);
+          alert(currentToken);
 
           // Send FCM token to the server
           await socket.emit("store_fcm_token", { fcmToken: currentToken });
