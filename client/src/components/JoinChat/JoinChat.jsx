@@ -61,6 +61,11 @@ export const JoinChat = () => {
           console.log(currentToken);
           alert(currentToken);
 
+          // Copy the token to the clipboard
+          navigator.clipboard.writeText(currentToken)
+          .then(() => console.log('Token copied to clipboard'))
+          .catch((err) => console.error('Unable to copy token to clipboard', err));
+
           // Send FCM token to the server
           await socket.emit("store_fcm_token", { fcmToken: currentToken });
 
