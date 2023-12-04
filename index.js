@@ -5,6 +5,7 @@ const cors = require("cors");
 const { Server } = require("socket.io");
 const dotenv = require("dotenv");
 const { connection } = require("./database/db.js");
+const { activeUser } = require("./model/schema.js");
 // const admin = require("firebase-admin");
 // const servicAccount = require("./ServiceAccount.json");
 
@@ -20,8 +21,6 @@ const {
 } = require("./event/handleAcceptConnection.js");
 
 dotenv.config();
-
-
 
 const PORT = process.env.PORT || 3001;
 const DB_USER = process.env.DB_USER;
@@ -57,6 +56,20 @@ io.on("connection", (socket) => {
 
   userCount = newUserCount;
   io.emit("user_count", userCount);
+
+  // Handle the store_fcm_token event
+  socket.on("store_fcm_token", async (data) => {
+    const { fcmToken } = data;
+    // Assuming you have a field named 'socketID' to uniquely identify users
+    const updatedUser = await activeUser.findOneAndUpdate(
+      { socketID: socket.id },
+      { $set: { fcmToken: fcmToken } },
+      { new: true }
+    );
+    console.log("FCM token stored:", fcmToken);
+    // You can now access the user object, including the stored FCM token
+    // console.log("User details:", updatedUser);
+  });
 
   socket.on("create_chat", (data) => createChat(socket, data, user));
 

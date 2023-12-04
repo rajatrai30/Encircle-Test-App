@@ -1,3 +1,11 @@
-.JoinChatInput{
-    font-size: 2rem;
+.JoinChat {
+  background-color: #c8ddde;
+}
+
+.JoinChatInput {
+  font-size: 2rem;
+}
+
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline {
+  font-size: 2rem;
 }

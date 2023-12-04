@@ -24,13 +24,13 @@ const createChat = async (socket, data, user) => {
 
     // Send push notification to the second
     const titleToSecondUser = "New Chat Request";
-    const bodyToSecondUser = "wants to chat with you";
+    const bodyToSecondUser = "Someone wants to chat with you";
     const imageToSecondUser = "https://rajat.engineer/static/media/profileImg.4a5ed4206aa46ec7703f.jpg";
     const click_action = "/";
 
     console.log("fcmToken: ", fcmTokenForSecondUser);
 
-    sendNotification(fcmTokenForSecondUser, titleToSecondUser, bodyToSecondUser, imageToSecondUser, click_action);
+    // sendNotification(fcmTokenForSecondUser, titleToSecondUser, bodyToSecondUser, imageToSecondUser, click_action);
 
    
     //move both users from active to busy if it's the second user entering the room

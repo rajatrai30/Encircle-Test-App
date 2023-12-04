@@ -8,6 +8,8 @@ import {
   Button,
 } from "@mui/material";
 
+import "./ConnectionModal.css";
+
 function ConnectionModal({
   open,
   onClose,
@@ -17,18 +19,18 @@ function ConnectionModal({
 }) {
   return (
     <Dialog open={open} onClose={onReject}>
-      <DialogTitle>Connection Request</DialogTitle>
+      <DialogTitle style={{ fontSize: "3rem" }}>Connection Request</DialogTitle>
       <DialogContent>
-        <DialogContentText>
+        <DialogContentText style={{ fontSize: "2rem" }}>
           Do you want to connect with Anonymous User? <br />
           User Details: {secondUserData}
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={onReject} color="secondary">
+        <Button onClick={onReject} color="secondary" style={{ fontSize: "2rem" }}>
           Reject
         </Button>
-        <Button onClick={onAccept} color="primary">
+        <Button onClick={onAccept} color="primary" style={{ fontSize: "2rem" }}>
           Accept
         </Button>
       </DialogActions>

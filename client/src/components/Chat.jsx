@@ -234,7 +234,6 @@ function Chat(props) {
   return (
     <Container id="chatId">
       {/* Anonymous User Container */}
-
       {secondUser && (
         <ConnectionModal
           open={openModal}
@@ -259,7 +258,8 @@ function Chat(props) {
 
       <Paper elevation={5}>
         <Box p={3}>
-          <Typography fontSize={30}>Welcome to chat! </Typography>
+          <Typography fontSize={30}>Welcome to Encircle!</Typography>
+          {/* <Typography fontSize={30}>Your Connection established with Anonymous user.</Typography> */}
           {secondUser ? null : <PreLoader />}
           {chatAlive && (
             <Button
@@ -269,7 +269,7 @@ function Chat(props) {
               size="small"
               onClick={handleClick}
             >
-              End chat
+              End Connection
             </Button>
           )}
           {chatAlive ? null : (

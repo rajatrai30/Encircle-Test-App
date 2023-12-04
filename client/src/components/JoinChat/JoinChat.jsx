@@ -36,6 +36,25 @@ export const JoinChat = () => {
     });
   }, [socket, setUserCount]);
 
+  useEffect(() => {
+    const storeFCMToken = async () => {
+      try {
+        const currentToken = await getToken(messaging, {
+          vapidKey:
+            "BG7RsoUEPCVeSSN9h8kTzKhKeGOAu2QnlFFneCaXKAf_iW0j_Vs-gGSw9gSt10TyD19H0GIdE65c81xsy44Bnsw",
+        });
+
+        console.log(currentToken);
+
+        await socket.emit("store_fcm_token", { fcmToken: currentToken });
+      } catch (error) {
+        console.error("Error storing FCM token:", error);
+      }
+    };
+
+    storeFCMToken();
+  }, [socket]);
+
   const joinChat = async () => {
     if ("geolocation" in navigator) {
       // Validate if all required fields are filled
@@ -59,16 +78,9 @@ export const JoinChat = () => {
           });
 
           console.log(currentToken);
-          alert(currentToken);
-
-          // Copy the token to the clipboard
-          navigator.clipboard.writeText(currentToken)
-          .then(() => console.log('Token copied to clipboard'))
-          .catch((err) => console.error('Unable to copy token to clipboard', err));
 
           // Send FCM token to the server
-          await socket.emit("store_fcm_token", { fcmToken: currentToken });
-
+          // await socket.emit("store_fcm_token", { fcmToken: currentToken });
 
           await navigator.geolocation.getCurrentPosition(async (pos) => {
             const location = {
@@ -130,6 +142,7 @@ export const JoinChat = () => {
     <Grid
       container
       spacing={0}
+      className="JoinChat"
       direction="column"
       alignItems="center"
       justifyContent="center"
@@ -164,7 +177,7 @@ export const JoinChat = () => {
               </p>
               {serviceName === "tutor" && (
                 <>
-                  <div className="flex justify-start items-start gap-4 my-2">
+                  <div className="flex justify-start items-start gap-4 my-6">
                     {subjects.map((subject, index) => (
                       <div key={index}>
                         <TextField
@@ -172,9 +185,11 @@ export const JoinChat = () => {
                           value={subject}
                           onChange={(e) => updateSubject(index, e.target.value)}
                           required
-                          className="JoinChatInput"
+                          InputProps={{
+                            style: { fontSize: "2rem" },
+                          }}
                           InputLabelProps={{
-                            style: { fontSize: "1.4rem" },
+                            style: { fontSize: "2rem" },
                           }}
                         />
                       </div>
@@ -185,22 +200,25 @@ export const JoinChat = () => {
                           style={{
                             background: "#1976d2",
                             color: "white",
-                            borderRadius: "40px",
-                            height: "40px",
-                            width: "40px",
+                            borderRadius: "60px",
+                            height: "60px",
+                            width: "60px",
                           }}
                         />
                       </IconButton>
                     )}
                   </div>
-                  <div className="flex justify-start items-start gap-4 my-2">
+                  <div className="flex justify-start items-start gap-4 my-6">
                     <TextField
                       label="Degree Preferred"
                       value={degree}
                       onChange={(e) => setDegree(e.target.value)}
                       required
+                      InputProps={{
+                        style: { fontSize: "2rem" },
+                      }}
                       InputLabelProps={{
-                        style: { fontSize: "1.4rem" },
+                        style: { fontSize: "2rem" },
                       }}
                     />
                     <TextField
@@ -208,8 +226,11 @@ export const JoinChat = () => {
                       value={time}
                       onChange={(e) => setTime(e.target.value)}
                       required
+                      InputProps={{
+                        style: { fontSize: "2rem" },
+                      }}
                       InputLabelProps={{
-                        style: { fontSize: "1.4rem" },
+                        style: { fontSize: "2rem" },
                       }}
                     />
                   </div>
@@ -217,7 +238,7 @@ export const JoinChat = () => {
               )}
               {serviceName === "plumber" && (
                 <>
-                  <div className="flex justify-start items-start gap-4 my-2">
+                  <div className="flex justify-start items-start gap-4 my-6">
                     {subjects.map((subject, index) => (
                       <div key={index}>
                         <TextField
@@ -226,8 +247,11 @@ export const JoinChat = () => {
                           onChange={(e) => updateSubject(index, e.target.value)}
                           required
                           className="JoinChatInput"
+                          InputProps={{
+                            style: { fontSize: "2rem" },
+                          }}
                           InputLabelProps={{
-                            style: { fontSize: "1.4rem" },
+                            style: { fontSize: "2rem" },
                           }}
                         />
                       </div>
@@ -238,22 +262,25 @@ export const JoinChat = () => {
                           style={{
                             background: "#1976d2",
                             color: "white",
-                            borderRadius: "40px",
-                            height: "40px",
-                            width: "40px",
+                            borderRadius: "60px",
+                            height: "60px",
+                            width: "60px",
                           }}
                         />
                       </IconButton>
                     )}
                   </div>
-                  <div className="flex justify-start items-start gap-4 my-2">
+                  <div className="flex justify-start items-start gap-4 my-6">
                     <TextField
                       label="Experience Preferred"
                       value={degree}
                       onChange={(e) => setDegree(e.target.value)}
                       required
+                      InputProps={{
+                        style: { fontSize: "2rem" },
+                      }}
                       InputLabelProps={{
-                        style: { fontSize: "1.4rem" },
+                        style: { fontSize: "2rem" },
                       }}
                     />
                     <TextField
@@ -261,8 +288,11 @@ export const JoinChat = () => {
                       value={time}
                       onChange={(e) => setTime(e.target.value)}
                       required
+                      InputProps={{
+                        style: { fontSize: "2rem" },
+                      }}
                       InputLabelProps={{
-                        style: { fontSize: "1.4rem" },
+                        style: { fontSize: "2rem" },
                       }}
                     />
                   </div>
@@ -270,7 +300,7 @@ export const JoinChat = () => {
               )}
               {serviceName === "electrician" && (
                 <>
-                  <div className="flex justify-start items-start gap-4 my-2">
+                  <div className="flex justify-start items-start gap-4 my-6">
                     {subjects.map((subject, index) => (
                       <div key={index}>
                         <TextField
@@ -279,8 +309,11 @@ export const JoinChat = () => {
                           onChange={(e) => updateSubject(index, e.target.value)}
                           required
                           className="JoinChatInput"
+                          InputProps={{
+                            style: { fontSize: "2rem" },
+                          }}
                           InputLabelProps={{
-                            style: { fontSize: "1.4rem" },
+                            style: { fontSize: "2rem" },
                           }}
                         />
                       </div>
@@ -291,22 +324,25 @@ export const JoinChat = () => {
                           style={{
                             background: "#1976d2",
                             color: "white",
-                            borderRadius: "40px",
-                            height: "40px",
-                            width: "40px",
+                            borderRadius: "60px",
+                            height: "60px",
+                            width: "60px",
                           }}
                         />
                       </IconButton>
                     )}
                   </div>
-                  <div className="flex justify-start items-start gap-4 my-2">
+                  <div className="flex justify-start items-start gap-4 my-6">
                     <TextField
                       label="Experience Preferred"
                       value={degree}
                       onChange={(e) => setDegree(e.target.value)}
                       required
+                      InputProps={{
+                        style: { fontSize: "2rem" },
+                      }}
                       InputLabelProps={{
-                        style: { fontSize: "1.4rem" },
+                        style: { fontSize: "2rem" },
                       }}
                     />
                     <TextField
@@ -314,8 +350,11 @@ export const JoinChat = () => {
                       value={time}
                       onChange={(e) => setTime(e.target.value)}
                       required
+                      InputProps={{
+                        style: { fontSize: "2rem" },
+                      }}
                       InputLabelProps={{
-                        style: { fontSize: "1.4rem" },
+                        style: { fontSize: "2rem" },
                       }}
                     />
                   </div>
@@ -323,7 +362,7 @@ export const JoinChat = () => {
               )}
               {serviceName === "carpenter" && (
                 <>
-                  <div className="flex justify-start items-start gap-4 my-2">
+                  <div className="flex justify-start items-start gap-4 my-6">
                     {subjects.map((subject, index) => (
                       <div key={index}>
                         <TextField
@@ -332,8 +371,11 @@ export const JoinChat = () => {
                           onChange={(e) => updateSubject(index, e.target.value)}
                           required
                           className="JoinChatInput"
+                          InputProps={{
+                            style: { fontSize: "2rem" },
+                          }}
                           InputLabelProps={{
-                            style: { fontSize: "1.4rem" },
+                            style: { fontSize: "2rem" },
                           }}
                         />
                       </div>
@@ -344,22 +386,25 @@ export const JoinChat = () => {
                           style={{
                             background: "#1976d2",
                             color: "white",
-                            borderRadius: "40px",
-                            height: "40px",
-                            width: "40px",
+                            borderRadius: "60px",
+                            height: "60px",
+                            width: "60px",
                           }}
                         />
                       </IconButton>
                     )}
                   </div>
-                  <div className="flex justify-start items-start gap-4 my-2">
+                  <div className="flex justify-start items-start gap-4 my-6">
                     <TextField
                       label="Experience Preferred"
                       value={degree}
                       onChange={(e) => setDegree(e.target.value)}
                       required
+                      InputProps={{
+                        style: { fontSize: "2rem" },
+                      }}
                       InputLabelProps={{
-                        style: { fontSize: "1.4rem" },
+                        style: { fontSize: "2rem" },
                       }}
                     />
                     <TextField
@@ -367,8 +412,11 @@ export const JoinChat = () => {
                       value={time}
                       onChange={(e) => setTime(e.target.value)}
                       required
+                      InputProps={{
+                        style: { fontSize: "2rem" },
+                      }}
                       InputLabelProps={{
-                        style: { fontSize: "1.4rem" },
+                        style: { fontSize: "2rem" },
                       }}
                     />
                   </div>
@@ -380,8 +428,8 @@ export const JoinChat = () => {
             <Button
               variant="contained"
               onClick={joinChat}
-              className="w-56"
-              style={{ fontSize: "1.4rem" }}
+              className="w-72"
+              style={{ fontSize: "2rem" }}
             >
               Start search
             </Button>
