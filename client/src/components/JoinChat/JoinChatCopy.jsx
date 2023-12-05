@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import Welcome from "../Welcome";
+import Welcome from "../Welcome/Welcome";
 import User from "../User";
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -9,6 +9,9 @@ import Tutor from "../../assets/ServiceIcons/Tutor.png";
 import Plumber from "../../assets/ServiceIcons/Plumber.png";
 import Electrician from "../../assets/ServiceIcons/Electrician.png";
 import Carpenter from "../../assets/ServiceIcons/Carpenter.png";
+import Maid from "../../assets/ServiceIcons/Maid.png";
+import Yoga from "../../assets/ServiceIcons/Yoga.png";
+
 import "./JoinChatCopy.css";
 
 export const JoinChatCopy = () => {
@@ -19,6 +22,8 @@ export const JoinChatCopy = () => {
     { name: "Plumber", icon: Plumber, link: "/start/plumber" },
     { name: "Electrician", icon: Electrician, link: "/start/electrician" },
     { name: "Carpenter", icon: Carpenter, link: "/start/carpenter" },
+    { name: "Maid", icon: Maid, link: "/start/maid" },
+    { name: "Yoga", icon: Yoga, link: "/start/yoga" },
   ];
 
   return (
@@ -29,12 +34,12 @@ export const JoinChatCopy = () => {
       direction="column"
       alignItems="center"
       justifyContent="center"
-      style={{ minHeight: "100vh" }}
+      style={{ minHeight: "105vh" }}
     >
       <Grid item xs="auto" marginBottom="30px">
-        <h1 className="text-bold text-[4rem] lg:text-[3rem]">
-          Welcome to Encircle Test App
-        </h1>
+        {/* <h1 className="text-bold text-[4rem] lg:text-[3rem]">
+          Welcome to Encircle!!
+        </h1> */}
         {!user ? (
           <Welcome />
         ) : (
@@ -50,16 +55,16 @@ export const JoinChatCopy = () => {
       </Grid> */}
       <Grid>
         {!user ? (
-          <p className="text-bold text-[3rem] lg:text-[2rem]">
+          <p className="font-bold text-[4rem]">
             Please sign in.
           </p>
         ) : (
           <>
-            <div>
-              <p className="text-bold text-[3rem] lg:text-[2rem]">
+            <div className="ServiceIcon">
+              <p className="font-bold text-[3rem]">
                 Please Select the Service of Your Choice
               </p>
-              <div className="flex justify-center items-center gap-10">
+              <div className="grid grid-cols-3 gap-12 mt-8">
                 {services.map((service, index) => (
                   <Link to={service.link} key={index}>
                     <Logo

@@ -1,3 +1,10 @@
-.StartIcon{
-    background-color: #9ACED1;
+.StartIcon {
+  background-color: #9aced1;
+}
+
+.ServiceIcon {
+  background: #83aebf;
+  border-radius: 26px;
+  padding: 22px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }

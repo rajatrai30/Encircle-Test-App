@@ -7,7 +7,7 @@ function Logo({IconImage, IconLink, logoName, service}) {
     return (
         <div className="Iconlogo">
             <Typography component={Link} to={IconLink}>
-                <img src={IconImage} alt="helenkyle" className="image" />
+                <img src={IconImage} alt="services" className="image" />
                 <span className="logoName text-bold text-[3rem] lg:text-[1rem]">{logoName}</span>
             </Typography>
         </div>

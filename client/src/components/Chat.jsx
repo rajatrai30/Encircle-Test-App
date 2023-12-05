@@ -19,7 +19,7 @@ import SendIcon from "@mui/icons-material/Send";
 import "./Chat.css";
 
 // ANONYMOUS DATA HANDLING
-import AnonymousUser from "./AnonymousUser";
+// import AnonymousUser from "./AnonymousUser";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
@@ -232,18 +232,19 @@ function Chat(props) {
   };
 
   return (
-    <Container id="chatId">
-      {/* Anonymous User Container */}
-      {secondUser && (
-        <ConnectionModal
-          open={openModal}
-          onClose={handleReject}
-          onAccept={handleAccept}
-          onReject={handleReject}
-          secondUserData={secondUser}
-        />
-      )}
-      <Paper elevation={5}>
+    <Grid container className="Chat">
+      <Container id="chatId">
+        {/* Anonymous User Container */}
+        {secondUser && (
+          <ConnectionModal
+            open={openModal}
+            onClose={handleReject}
+            onAccept={handleAccept}
+            onReject={handleReject}
+            secondUserData={secondUser}
+          />
+        )}
+        {/* <Paper elevation={5}>
         <Box p={3} marginY={3}>
           <Typography>
             {!user ? (
@@ -253,81 +254,129 @@ function Chat(props) {
             )}
           </Typography>
         </Box>
-      </Paper>
-      {/* Anonymous User Container */}
+      </Paper> */}
+        {/* Anonymous User Container */}
 
-      <Paper elevation={5}>
-        <Box p={3}>
-          <Typography fontSize={30}>Welcome to Encircle!</Typography>
-          {/* <Typography fontSize={30}>Your Connection established with Anonymous user.</Typography> */}
-          {secondUser ? null : <PreLoader />}
-          {chatAlive && (
-            <Button
-              className="w-56"
-              variant="outlined"
-              color="error"
-              size="small"
-              onClick={handleClick}
-            >
-              End Connection
-            </Button>
-          )}
-          {chatAlive ? null : (
-            <Box marginBottom={2}>
-              <Typography>
-                User disconnected, to go back to start{" "}
+        <Paper elevation={5} style={{ background: "#E7F3FF" }}>
+          <Box
+            p={3}
+            className="flex flex-col justify-start items-center gap-32"
+          >
+            {secondUser ? (
+              <Typography style={{ fontSize: "4rem", fontWeight: "bold" }}>
+                Nearby Services Found!!
+              </Typography>
+            ) : (
+              <Typography style={{ fontSize: "4rem", fontWeight: "bold" }}>
+                Search Nearby Services
+              </Typography>
+            )}
+            {/* <Typography fontSize={30}>Your Connection established with Anonymous user.</Typography> */}
+            {secondUser ? null : <PreLoader />}
+            {secondUser && (
+              <Grid
+                container
+                spacing={4}
+                alignItems="center"
+                // style={{
+                //   marginTop: "2rem",
+                // }}
+              >
+                <Grid id="chat-window" xs={12} item>
+                  <List id="chat-window-messages">
+                    {listAllMessage}
+                    <ListItem ref={scrollRef}></ListItem>
+                  </List>
+                </Grid>
+                <Grid xs={10} item>
+                  <FormControl fullWidth>
+                    <TextField
+                      onChange={(e) => handleTyping(e)}
+                      onKeyPress={(e) => handleKeyPress(e)}
+                      value={msg}
+                      label="Start Chat"
+                      variant="outlined"
+                      disabled={!chatAlive}
+                      InputProps={{
+                        style: { fontSize: "2.4rem" },
+                      }}
+                      InputLabelProps={{
+                        style: { fontSize: "2.4rem" },
+                      }}
+                    />
+                  </FormControl>
+                </Grid>
+                <Grid xs={2} item>
+                  <IconButton
+                    onClick={sendMessage}
+                    aria-label="send"
+                    color="primary"
+                    disabled={!chatAlive}
+                  >
+                    <SendIcon
+                      style={{
+                        height: "60px",
+                        width: "60px",
+                      }}
+                    />
+                  </IconButton>
+                </Grid>
+                {isTyping ? (
+                  <Typography
+                    marginLeft={4}
+                    style={{
+                      fontSize: "2rem",
+                    }}
+                  >
+                    Other user is typing ...{" "}
+                  </Typography>
+                ) : null}
+              </Grid>
+            )}
+            {chatAlive && (
+              <Button
+                style={{
+                  fontSize: "3rem",
+                  width: "35rem",
+                  height: "8rem",
+                  borderRadius: "25px",
+                  // marginTop: "17rem",
+                }}
+                variant="contained"
+                color="primary"
+                size="small"
+                onClick={handleClick}
+              >
+                End Connection
+              </Button>
+            )}
+            {chatAlive ? null : (
+              <Box className="flex flex-col justify-start items-center gap-2" style={{marginTop:"-35px"}}>
+                <Typography style={{ fontSize: "2.8rem", fontWeight: "bold" }}>
+                  User Disconnected, to go back to start
+                </Typography>
                 <Button
-                  variant="outlined"
-                  color="secondary"
+                  style={{
+                    fontSize: "2.5rem",
+                    width: "19rem",
+                    height: "8rem",
+                    borderRadius: "25px",
+                    // marginTop: "17rem",
+                  }}
+                  variant="contained"
+                  color="primary"
                   size="small"
                   onClick={handleClick}
                 >
                   click here
                 </Button>
-              </Typography>
-            </Box>
-          )}
-          <Divider sx={{ marginTop: "10px" }} />
-          {secondUser && (
-            <Grid container spacing={4} alignItems="center">
-              <Grid id="chat-window" xs={12} item>
-                <List id="chat-window-messages">
-                  {listAllMessage}
-                  <ListItem ref={scrollRef}></ListItem>
-                </List>
-              </Grid>
-              <Grid xs={10} item>
-                <FormControl fullWidth>
-                  <TextField
-                    onChange={(e) => handleTyping(e)}
-                    onKeyPress={(e) => handleKeyPress(e)}
-                    value={msg}
-                    label="Start chatting..."
-                    variant="outlined"
-                    disabled={!chatAlive}
-                  />
-                </FormControl>
-              </Grid>
-              <Grid xs={2} item>
-                <IconButton
-                  onClick={sendMessage}
-                  aria-label="send"
-                  color="primary"
-                  disabled={!chatAlive}
-                >
-                  <SendIcon />
-                </IconButton>
-              </Grid>
-            </Grid>
-          )}
-          {isTyping ? (
-            <Typography fontSize={12} marginLeft={2}>
-              Other user is typing ...{" "}
-            </Typography>
-          ) : null}
-        </Box>
-      </Paper>
-    </Container>
+              </Box>
+            )}
+            <Divider sx={{ marginTop: "10px" }} />
+          </Box>
+        </Paper>
+      </Container>
+    </Grid>
   );
 }
 

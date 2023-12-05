@@ -30,7 +30,7 @@ const createChat = async (socket, data, user) => {
 
     console.log("fcmToken: ", fcmTokenForSecondUser);
 
-    // sendNotification(fcmTokenForSecondUser, titleToSecondUser, bodyToSecondUser, imageToSecondUser, click_action);
+    sendNotification(fcmTokenForSecondUser, titleToSecondUser, bodyToSecondUser, imageToSecondUser, click_action);
 
    
     //move both users from active to busy if it's the second user entering the room

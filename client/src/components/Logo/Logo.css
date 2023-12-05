@@ -22,17 +22,18 @@
 
 @media screen and (min-width: 600px) {
   .Iconlogo img {
-    width: 10rem; /* Adjust the width as needed */
+    width: 14rem;
+    border-radius: 33px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .Iconlogo img {
-    width: 100%; /* Adjust the width as needed */
+    width: 100%;
   }
 }
 
 .Iconlogo svg {
-  font-size: 1.25rem; /* Equivalent to theme.spacing(5) in MUI */
-  color: blue; /* Replace with the actual color */
+  font-size: 1.25rem;
+  color: blue;
 }

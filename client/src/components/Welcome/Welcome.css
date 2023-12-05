@@ -1,0 +1,13 @@
+.welcome h2 {
+  font-weight: bold;
+}
+
+.welcome .HomeIcon {
+  width: 59rem;
+  height: auto;
+}
+
+.welcome img {
+  width: 36rem;
+  height: auto;
+}

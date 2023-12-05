@@ -9,3 +9,10 @@
 .css-1d3z3hw-MuiOutlinedInput-notchedOutline {
   font-size: 2rem;
 }
+
+.JoinChatServiceIcon {
+  background: #83aebf;
+  border-radius: 26px;
+  padding: 70px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}

@@ -1,23 +1,31 @@
 .UserComponent {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   font-size: 3rem;
 }
 
 .AvatarColumn {
   flex: 0 0 auto; /* This prevents the AvatarColumn from flexing and maintains its original size */
-  margin-right: 20px; /* Add some spacing between the avatar and info */
 }
 
 .InfoColumn {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.InfoColumn h2 {
+  font-size: 5rem;
 }
 
 /* You can add more styles as needed */
 .AvatarColumn > img {
-  height: 115px;
+  height: 356px;
   width: auto;
+  border-radius: 211px;
 }
 
 @media screen and (min-width: 600px) {

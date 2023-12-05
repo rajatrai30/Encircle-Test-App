@@ -27,7 +27,11 @@ export const Navbar = () => {
 
   return (
     // <Box sx={{ flexGrow: 1 }} color="#242443">
-    <AppBar position="static" className="NavRoot" style={{position:"fixed", top:"0", left:"auto", right:"0"}}>
+    <AppBar
+      position="static"
+      className="NavRoot"
+      style={{ position: "fixed", top: "0", left: "auto", right: "0" }}
+    >
       <Toolbar className="NavContainer">
         {/* <Icon
           variant="h2"
@@ -59,13 +63,19 @@ export const Navbar = () => {
                 Sign Out
               </button>
             ) : (
-              <button className="sign-in">
-                <img
+              <button
+                className="sign-in mx-4"
+                style={{
+                  fontSize: "3rem",
+                }}
+              >
+                {/* <img
                   onClick={googleSignIn}
                   src={GoogleSignin}
                   alt="sign in with google"
                   type="button"
-                />
+                /> */}
+                Sign in
               </button>
             )}
           </Typography>

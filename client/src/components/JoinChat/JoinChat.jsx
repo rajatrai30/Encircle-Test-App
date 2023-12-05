@@ -5,7 +5,7 @@ import { Button, Grid, TextField } from "@mui/material";
 // import Description from "../Description";
 import "./JoinChat.css";
 
-import Welcome from "../Welcome";
+import Welcome from "../Welcome/Welcome";
 import User from "../User";
 import { auth, getToken, messaging } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -149,9 +149,9 @@ export const JoinChat = () => {
       style={{ minHeight: "100vh" }}
     >
       <Grid item xs="auto" marginBottom="30px">
-        <h1 className="text-bold text-[4rem] lg:text-[3rem]">
-          Welcome to Encircle Test App
-        </h1>
+        {/* <h1 className="font-bold text-[4rem]">
+          Welcome to Encircle App
+        </h1> */}
         {!user ? (
           <Welcome />
         ) : (
@@ -165,13 +165,14 @@ export const JoinChat = () => {
       <Grid
         item
         xs="auto"
-        marginBottom="30px"
-        className="text-[3rem] lg:text-[2rem]"
+        marginTop="30px"
+        style={{ margin: "21px" }}
+        className="JoinChatServiceIcon"
       >
         <>
           {serviceName && (
             <>
-              <p className="text-bold text-[3rem] lg:text-[2rem]">
+              <p className="font-bold text-[4rem] mb-10">
                 Selected Service:{" "}
                 {serviceName.charAt(0).toUpperCase() + serviceName.slice(1)}
               </p>
@@ -186,10 +187,10 @@ export const JoinChat = () => {
                           onChange={(e) => updateSubject(index, e.target.value)}
                           required
                           InputProps={{
-                            style: { fontSize: "2rem" },
+                            style: { fontSize: "2.5rem" },
                           }}
                           InputLabelProps={{
-                            style: { fontSize: "2rem" },
+                            style: { fontSize: "2.5rem" },
                           }}
                         />
                       </div>
@@ -215,10 +216,10 @@ export const JoinChat = () => {
                       onChange={(e) => setDegree(e.target.value)}
                       required
                       InputProps={{
-                        style: { fontSize: "2rem" },
+                        style: { fontSize: "2.5rem" },
                       }}
                       InputLabelProps={{
-                        style: { fontSize: "2rem" },
+                        style: { fontSize: "2.5rem" },
                       }}
                     />
                     <TextField
@@ -227,10 +228,10 @@ export const JoinChat = () => {
                       onChange={(e) => setTime(e.target.value)}
                       required
                       InputProps={{
-                        style: { fontSize: "2rem" },
+                        style: { fontSize: "2.5rem" },
                       }}
                       InputLabelProps={{
-                        style: { fontSize: "2rem" },
+                        style: { fontSize: "2.5rem" },
                       }}
                     />
                   </div>
@@ -248,10 +249,10 @@ export const JoinChat = () => {
                           required
                           className="JoinChatInput"
                           InputProps={{
-                            style: { fontSize: "2rem" },
+                            style: { fontSize: "2.5rem" },
                           }}
                           InputLabelProps={{
-                            style: { fontSize: "2rem" },
+                            style: { fontSize: "2.5rem" },
                           }}
                         />
                       </div>
@@ -277,10 +278,10 @@ export const JoinChat = () => {
                       onChange={(e) => setDegree(e.target.value)}
                       required
                       InputProps={{
-                        style: { fontSize: "2rem" },
+                        style: { fontSize: "2.5rem" },
                       }}
                       InputLabelProps={{
-                        style: { fontSize: "2rem" },
+                        style: { fontSize: "2.5rem" },
                       }}
                     />
                     <TextField
@@ -289,10 +290,10 @@ export const JoinChat = () => {
                       onChange={(e) => setTime(e.target.value)}
                       required
                       InputProps={{
-                        style: { fontSize: "2rem" },
+                        style: { fontSize: "2.5rem" },
                       }}
                       InputLabelProps={{
-                        style: { fontSize: "2rem" },
+                        style: { fontSize: "2.5rem" },
                       }}
                     />
                   </div>
@@ -310,10 +311,10 @@ export const JoinChat = () => {
                           required
                           className="JoinChatInput"
                           InputProps={{
-                            style: { fontSize: "2rem" },
+                            style: { fontSize: "2.5rem" },
                           }}
                           InputLabelProps={{
-                            style: { fontSize: "2rem" },
+                            style: { fontSize: "2.5rem" },
                           }}
                         />
                       </div>
@@ -339,10 +340,10 @@ export const JoinChat = () => {
                       onChange={(e) => setDegree(e.target.value)}
                       required
                       InputProps={{
-                        style: { fontSize: "2rem" },
+                        style: { fontSize: "2.5rem" },
                       }}
                       InputLabelProps={{
-                        style: { fontSize: "2rem" },
+                        style: { fontSize: "2.5rem" },
                       }}
                     />
                     <TextField
@@ -351,10 +352,10 @@ export const JoinChat = () => {
                       onChange={(e) => setTime(e.target.value)}
                       required
                       InputProps={{
-                        style: { fontSize: "2rem" },
+                        style: { fontSize: "2.5rem" },
                       }}
                       InputLabelProps={{
-                        style: { fontSize: "2rem" },
+                        style: { fontSize: "2.5rem" },
                       }}
                     />
                   </div>
@@ -372,10 +373,10 @@ export const JoinChat = () => {
                           required
                           className="JoinChatInput"
                           InputProps={{
-                            style: { fontSize: "2rem" },
+                            style: { fontSize: "2.5rem" },
                           }}
                           InputLabelProps={{
-                            style: { fontSize: "2rem" },
+                            style: { fontSize: "2.5rem" },
                           }}
                         />
                       </div>
@@ -401,10 +402,10 @@ export const JoinChat = () => {
                       onChange={(e) => setDegree(e.target.value)}
                       required
                       InputProps={{
-                        style: { fontSize: "2rem" },
+                        style: { fontSize: "2.5rem" },
                       }}
                       InputLabelProps={{
-                        style: { fontSize: "2rem" },
+                        style: { fontSize: "2.5rem" },
                       }}
                     />
                     <TextField
@@ -413,10 +414,10 @@ export const JoinChat = () => {
                       onChange={(e) => setTime(e.target.value)}
                       required
                       InputProps={{
-                        style: { fontSize: "2rem" },
+                        style: { fontSize: "2.5rem" },
                       }}
                       InputLabelProps={{
-                        style: { fontSize: "2rem" },
+                        style: { fontSize: "2.5rem" },
                       }}
                     />
                   </div>
@@ -424,12 +425,17 @@ export const JoinChat = () => {
               )}
             </>
           )}
-          <div className="flex justify-center items-center gap-4 my-4">
+          <div className="flex justify-center items-center gap-4 my-4 mt-24">
             <Button
               variant="contained"
               onClick={joinChat}
-              className="w-72"
-              style={{ fontSize: "2rem" }}
+              style={{
+                fontSize: "3rem",
+                width: "35rem",
+                height: "8rem",
+                borderRadius: "25px",
+                // marginTop: "17rem",
+              }}
             >
               Start search
             </Button>

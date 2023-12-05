@@ -1,10 +1,15 @@
+body {
+  /* background-color: #c8ddde; */
+  background-color: #9aced1;
+}
+
 .sign-in {
   border: none;
   background-color: transparent;
   cursor: pointer;
 }
 .sign-in > img {
-  height: 100px;
+  height: 165px;
   width: auto;
 }
 .sign-out {

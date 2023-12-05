@@ -7,7 +7,7 @@ const PreLoader = () => {
   return (
     <div className="flex flex-row items-center justify-center preloader">
       <div className="flex flex-col items-center justify-center">
-        <Lottie className="w-72 h-72" animationData={animationData} />
+        <Lottie className="my-40 LottiePreloader" animationData={animationData} />
       </div>
     </div>
   );
