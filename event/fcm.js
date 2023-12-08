@@ -10,7 +10,7 @@ const notificationOptions = {
   timeToLive: 60 * 60 * 24,
 };
 
-const sendNotification = (fcmToken, title, body, image, click_action) => {
+const sendNotification = (fcmToken, title, body, image, icon, click_action) => {
   // const fcmToken =
   // "fAdKZe8f7-_7ZTeSOPnBnN:APA91bE35wqp9fhNmaPYi4hHB9flSbpItjUL1oD-_hOUPrCOFvxW0mz8fScSf0qIspn9FgYdgRlq3MVVZD-7-SKyPGkF5ZpTnFVAOVFRK-rbHsvWFm6t8W0MDnzjH6Uols0FEzYK_WIk";
 
@@ -20,6 +20,7 @@ const sendNotification = (fcmToken, title, body, image, click_action) => {
         title,
         body,
         image,
+        icon,
         click_action,
       },
     };

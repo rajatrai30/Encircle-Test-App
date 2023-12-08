@@ -6,7 +6,7 @@ import { Button, Grid, TextField } from "@mui/material";
 import "./JoinChat.css";
 
 import Welcome from "../Welcome/Welcome";
-import User from "../User";
+import User from "../User/User";
 import { auth, getToken, messaging } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import IconButton from "@mui/material/IconButton";

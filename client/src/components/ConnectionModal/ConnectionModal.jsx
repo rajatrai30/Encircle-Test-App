@@ -19,7 +19,7 @@ function ConnectionModal({
 }) {
   return (
     <Dialog open={open} onClose={onReject}>
-      <DialogTitle style={{ fontSize: "3rem" }}>Connection Request</DialogTitle>
+      <DialogTitle style={{ fontSize: "3rem" }}>New Connection Request</DialogTitle>
       <DialogContent>
         <DialogContentText style={{ fontSize: "2rem" }}>
           Do you want to connect with Anonymous User? <br />

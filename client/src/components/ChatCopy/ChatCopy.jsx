@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { useStore } from "../zustand/store";
+import { useStore } from "../../zustand/store";
 import shallow from "zustand/shallow";
 import { Box, Container } from "@mui/system";
+import { Link } from "react-router-dom";
 import {
   Button,
   Divider,
@@ -16,20 +17,23 @@ import {
   Typography,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import "./Chat.css";
+import "./ChatCopy.css";
 
 // ANONYMOUS DATA HANDLING
 // import AnonymousUser from "./AnonymousUser";
-import { auth } from "../firebase";
+import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 // LOTTIE REACT ANIMATION
-import PreLoader from "./PreLoader/PreLoader";
+import PreLoader from "../PreLoader/PreLoader";
 
 // Connection Request Modal
-import ConnectionModal from "./ConnectionModal";
+import ConnectionModal from "../ConnectionModal/ConnectionModal";
 
-function Chat(props) {
+// Connection Info
+// import ConnectionInfo from "../ConnectionInfo/ConnectionInfo";
+
+function ChatCopy(props) {
   const [user] = useAuthState(auth);
   // const [chat, setChat] = useState(false);
   // const [allMessage, setAllMessage] = useState([]);
@@ -37,6 +41,7 @@ function Chat(props) {
   // const [chatAlive, setChatAlive] = useState(true);
 
   const [openModal, setOpenModal] = useState(true);
+  // const [showChatInput, setShowChatInput] = useState(false);
 
   //global states
   const [allMessage, setAllMessage, clearAllMessage] = useStore(
@@ -231,6 +236,11 @@ function Chat(props) {
     handleClick();
   };
 
+  // const handleClickChatWithHim = () => {
+  //   // Toggle the state to show/hide the chat input interface
+  //   setShowChatInput(!showChatInput);
+  // };
+
   return (
     <Grid container className="Chat">
       <Container id="chatId">
@@ -273,22 +283,38 @@ function Chat(props) {
             )}
             {/* <Typography fontSize={30}>Your Connection established with Anonymous user.</Typography> */}
             {secondUser ? null : <PreLoader />}
+            {/* {secondUser && !showChatInput && (
+              <ConnectionInfo secondUser={secondUser} onClickChat={handleClickChatWithHim} />
+            )} */}
             {secondUser && (
-              <Grid
-                container
-                spacing={4}
-                alignItems="center"
-                // style={{
-                //   marginTop: "2rem",
-                // }}
-              >
-                <Grid id="chat-window" xs={12} item>
+              <Grid container spacing={4} alignItems="center">
+                <Grid xs={12} item>
+                  {/* New button to navigate to the ChatPage */}
+                  <Link to="/chat" style={{ textDecoration: "none" }}>
+                    <Button
+                      style={{
+                        fontSize: "3rem",
+                        width: "35rem",
+                        height: "8rem",
+                        borderRadius: "25px",
+                        marginTop: "2rem", // Adjust the margin as needed
+                      }}
+                      variant="contained"
+                      color="primary"
+                      size="small"
+                      disabled={!chatAlive}
+                    >
+                      Chat with Him
+                    </Button>
+                  </Link>
+                </Grid>
+                {/* <Grid id="chat-window" xs={12} item>
                   <List id="chat-window-messages">
                     {listAllMessage}
                     <ListItem ref={scrollRef}></ListItem>
-                  </List>
-                </Grid>
-                <Grid xs={10} item>
+                  </List> 
+                </Grid> */}
+                {/* <Grid xs={10} item>
                   <FormControl fullWidth>
                     <TextField
                       onChange={(e) => handleTyping(e)}
@@ -305,8 +331,8 @@ function Chat(props) {
                       }}
                     />
                   </FormControl>
-                </Grid>
-                <Grid xs={2} item>
+                </Grid> */}
+                {/* <Grid xs={2} item>
                   <IconButton
                     onClick={sendMessage}
                     aria-label="send"
@@ -320,8 +346,8 @@ function Chat(props) {
                       }}
                     />
                   </IconButton>
-                </Grid>
-                {isTyping ? (
+                </Grid> */}
+                {/* {isTyping ? (
                   <Typography
                     marginLeft={4}
                     style={{
@@ -330,7 +356,7 @@ function Chat(props) {
                   >
                     Other user is typing ...{" "}
                   </Typography>
-                ) : null}
+                ) : null} */}
               </Grid>
             )}
             {chatAlive && (
@@ -351,7 +377,10 @@ function Chat(props) {
               </Button>
             )}
             {chatAlive ? null : (
-              <Box className="flex flex-col justify-start items-center gap-2" style={{marginTop:"-35px"}}>
+              <Box
+                className="flex flex-col justify-start items-center gap-2"
+                style={{ marginTop: "-35px" }}
+              >
                 <Typography style={{ fontSize: "2.8rem", fontWeight: "bold" }}>
                   User Disconnected, to go back to start
                 </Typography>
@@ -380,4 +409,4 @@ function Chat(props) {
   );
 }
 
-export default Chat;
+export default ChatCopy;

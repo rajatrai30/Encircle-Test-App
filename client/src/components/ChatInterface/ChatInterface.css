@@ -1,0 +1,33 @@
+#chatId {
+  margin-top: 11rem;
+  background: #9aced1;
+}
+
+#chat-window {
+  height: 46rem;
+}
+
+#chat-window-messages {
+  height: 43rem;
+  overflow: auto;
+}
+
+.css-olngl9-MuiTypography-root {
+  font-size: 3rem !important;
+}
+
+.css-10hburv-MuiTypography-root {
+  font-size: 3rem !important;
+}
+
+.css-7m39yp {
+  font-size: 3rem !important;
+}
+
+.css-yb0lig {
+  font-size: 3rem !important;
+}
+
+.Chat {
+  background-color: #9aced1;
+}

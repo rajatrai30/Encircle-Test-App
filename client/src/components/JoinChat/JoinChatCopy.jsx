@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
 import Welcome from "../Welcome/Welcome";
-import User from "../User";
+import User from "../User/User";
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Logo from "../Logo/Logo";

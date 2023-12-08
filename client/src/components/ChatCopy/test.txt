@@ -1,0 +1,50 @@
+// ChatButton.jsx
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { Button, Grid } from "@mui/material";
+import { useStore } from "../../zustand/store";
+
+const ChatButton = () => {
+  const navigate = useNavigate();
+  const chat = useStore((state) => state.chat);
+
+  const handleChatClick = () => {
+    // Navigate to the chat page only if chat is active
+    if (chat) {
+      navigate("/chat");
+    }
+  };
+
+  return (
+    <Grid
+      container
+      className="StartIcon"
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      style={{ minHeight: "105vh" }}
+    >
+      <Grid item xs="auto" marginBottom="30px">
+        <Button
+          style={{
+            fontSize: "3rem",
+            width: "35rem",
+            height: "8rem",
+            borderRadius: "25px",
+            // marginTop: "17rem",
+          }}
+          variant="contained"
+          color="primary"
+          size="small"
+          onClick={handleChatClick}
+          disabled={!chat}
+        >
+          ChatWithHim
+        </Button>
+      </Grid>
+    </Grid>
+  );
+};
+
+export default ChatButton;
