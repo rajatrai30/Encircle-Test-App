@@ -1,8 +1,8 @@
 import React from "react";
-import { Button, Grid } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import "./BookingInterface.css";
 
-function BookingInterface() {
+function BookingInterface({ secondUser }) {
   return (
     <>
       <Grid
@@ -25,6 +25,20 @@ function BookingInterface() {
           justifyContent="center"
           item
         >
+          <Typography
+            style={{
+              fontSize: "3rem",
+              width: "40rem",
+              height: "8rem",
+              borderRadius: "25px",
+              background: "#fff",
+            }}
+            alignItems="center"
+            display="flex"
+            justifyContent="center"
+          >
+            {secondUser}
+          </Typography>
           <Button
             style={{
               fontSize: "3rem",
@@ -32,14 +46,14 @@ function BookingInterface() {
               height: "8rem",
               borderRadius: "25px",
               marginTop: "10px",
-              background:"#fff"
+              background: "#fff",
             }}
             variant="outlined"
             color="primary"
             size="small"
           >
-            ComingSoon
-          </Button>{" "}
+            Coming Soon
+          </Button>
         </Grid>
       </Grid>
     </>

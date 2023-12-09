@@ -18,7 +18,7 @@ const createChat = async (socket, data, user) => {
 
     // const fcmTokenForSecondUser = "fAdKZe8f7-_7ZTeSOPnBnN:APA91bE6PeVwjosfcfp4M1OteHM-Za15x8nWIuQgSjxYSKJawN5OXcnzmjZMkiHaPmsSm7cZnzjs00X6Ag2Fhg268d6yBoqf3B5s1bGTz-4PISKxiX0SN9lu7f8tHWiJNvd-Jz3SCm5y";
     // const fcmTokenForSecondUser = "eBGJIgQfa4Jc4iPq06fDKu:APA91bHGeyOzW3xLGnxvVjTYYHlalqrHaMi1TkIym1mBRPrt1QCJN5u3UMDLJFIXkHz2QkeAf6p_NxP7q5mIDyhrDxzNA6CN5VIo_WMKpkaI4nb9sqDOF1KfGLe0GFX6REyKbx_j3dlM";
-    const fcmTokenForSecondUser = "crCPomakFxybLlL8pyc0Cm:APA91bHl3q7l86gVGvekr3L4PcUEUO4fMq4dm-znCzIngYdjmJCcDy8uZaRhFP0juAk_U_NyJaWk3V0KUyokyuUQV6tCoFj3gkkjFb9Zjq9yFobKwMlLUJpu7AAqEaipwth3v2HK3A5p";
+    const fcmTokenForSecondUser = "dwSafP4mqgfCdW5losa5GE:APA91bFrmbwdl80imW5VO9fEX6kQ7WgP1z9Kz0MMqDdeqMWz2zW43s17DHFM4kFU7nf5sePbr6jgkZys_aKWB-HoVshPHEtQEHp8nvXUjz5oDcUIoF4hcUbKcJlDRn-PKgWyoMN2dPnu";
     // const fcmTokenForSecondUser = "e452G-Jn597hZJ4KTBrtgH:APA91bHLIsmxMVnFCEtJN6b5Nkmpa1POCG2hWQLoDYGyGeMPVsx1AUme2RvPN8uWIYnNXZYCoFhg0m7D8DR6EvtNnLbGNmTEjaHqxVm_8eFwwgIWUcS4FUbLfYc7E7rWyZS-WHFV_Fop";
     // const fcmTokenForSecondUser = await getFcmTokenBySocketId(userWithLocation.socketID);
 

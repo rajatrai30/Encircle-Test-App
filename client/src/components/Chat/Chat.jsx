@@ -369,7 +369,7 @@ function Chat(props) {
               {/* BOOKING INTERFACE */}
               {secondUser && BookInterface ? (
                 <>
-                  <BookingInterface />
+                  <BookingInterface secondUser={secondUser} />
                   {/* Add a button to go back from the chat interface */}
                   <Button
                     style={{
@@ -405,7 +405,7 @@ function Chat(props) {
                       size="small"
                       onClick={handleGoToBook}
                     >
-                      Book User
+                      Send File
                     </Button>
                   )}
                 </>
