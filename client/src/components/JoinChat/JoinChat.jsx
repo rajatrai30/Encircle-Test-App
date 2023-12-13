@@ -423,6 +423,130 @@ export const JoinChat = () => {
                   </div>
                 </>
               )}
+              {serviceName === "maid" && (
+                <>
+                  <div className="flex justify-start items-start gap-4 my-6">
+                    {subjects.map((subject, index) => (
+                      <div key={index}>
+                        <TextField
+                          label={`Maid Service ${index + 1}`}
+                          value={subject}
+                          onChange={(e) => updateSubject(index, e.target.value)}
+                          required
+                          className="JoinChatInput"
+                          InputProps={{
+                            style: { fontSize: "2.5rem" },
+                          }}
+                          InputLabelProps={{
+                            style: { fontSize: "2.5rem" },
+                          }}
+                        />
+                      </div>
+                    ))}
+                    {subjects.length < maxSubjects && (
+                      <IconButton onClick={addSubject}>
+                        <AddIcon
+                          style={{
+                            background: "#1976d2",
+                            color: "white",
+                            borderRadius: "60px",
+                            height: "60px",
+                            width: "60px",
+                          }}
+                        />
+                      </IconButton>
+                    )}
+                  </div>
+                  <div className="flex justify-start items-start gap-4 my-6">
+                    <TextField
+                      label="Experience Preferred"
+                      value={degree}
+                      onChange={(e) => setDegree(e.target.value)}
+                      required
+                      InputProps={{
+                        style: { fontSize: "2.5rem" },
+                      }}
+                      InputLabelProps={{
+                        style: { fontSize: "2.5rem" },
+                      }}
+                    />
+                    <TextField
+                      label="Time Preferred"
+                      value={time}
+                      onChange={(e) => setTime(e.target.value)}
+                      required
+                      InputProps={{
+                        style: { fontSize: "2.5rem" },
+                      }}
+                      InputLabelProps={{
+                        style: { fontSize: "2.5rem" },
+                      }}
+                    />
+                  </div>
+                </>
+              )}
+              {serviceName === "yoga" && (
+                <>
+                  <div className="flex justify-start items-start gap-4 my-6">
+                    {subjects.map((subject, index) => (
+                      <div key={index}>
+                        <TextField
+                          label={`Yoga Service ${index + 1}`}
+                          value={subject}
+                          onChange={(e) => updateSubject(index, e.target.value)}
+                          required
+                          className="JoinChatInput"
+                          InputProps={{
+                            style: { fontSize: "2.5rem" },
+                          }}
+                          InputLabelProps={{
+                            style: { fontSize: "2.5rem" },
+                          }}
+                        />
+                      </div>
+                    ))}
+                    {subjects.length < maxSubjects && (
+                      <IconButton onClick={addSubject}>
+                        <AddIcon
+                          style={{
+                            background: "#1976d2",
+                            color: "white",
+                            borderRadius: "60px",
+                            height: "60px",
+                            width: "60px",
+                          }}
+                        />
+                      </IconButton>
+                    )}
+                  </div>
+                  <div className="flex justify-start items-start gap-4 my-6">
+                    <TextField
+                      label="Experience Preferred"
+                      value={degree}
+                      onChange={(e) => setDegree(e.target.value)}
+                      required
+                      InputProps={{
+                        style: { fontSize: "2.5rem" },
+                      }}
+                      InputLabelProps={{
+                        style: { fontSize: "2.5rem" },
+                      }}
+                    />
+                    <TextField
+                      label="Time Preferred"
+                      value={time}
+                      onChange={(e) => setTime(e.target.value)}
+                      required
+                      InputProps={{
+                        style: { fontSize: "2.5rem" },
+                      }}
+                      InputLabelProps={{
+                        style: { fontSize: "2.5rem" },
+                      }}
+                    />
+                  </div>
+                </>
+              )}
             </>
           )}
           <div className="flex justify-center items-center gap-4 my-4 mt-24">

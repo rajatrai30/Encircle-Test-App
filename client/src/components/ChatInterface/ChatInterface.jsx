@@ -3,6 +3,7 @@ import { Typography, Grid, List } from "@mui/material";
 import { FormControl, IconButton, ListItem, TextField } from "@mui/material";
 import "./ChatInterface.css"; // Import the CSS file
 import SendIcon from "@mui/icons-material/Send";
+import Anon from "../../assets/ChatIcon/AnonUser.png";
 
 function ChatInterface({
   scrollRef,
@@ -13,6 +14,7 @@ function ChatInterface({
   msg,
   chatAlive,
   isTyping,
+  secondUser,
 }) {
   return (
     <>
@@ -25,6 +27,29 @@ function ChatInterface({
         // }}
       >
         <Grid id="chat-window" xs={12} item>
+          <div className="ChatAnonymousUserUserComponent mb-4 p-4">
+            <div className="ChatAnonymousUserAvatarColumn">
+              <img src={Anon} alt="User Avatar" />
+            </div>
+            <div className="ChatAnonymousUserInfoColumn">
+              <h2>{secondUser}</h2>
+              {isTyping ? (
+                <Typography
+                  style={{
+                    fontSize: "2rem",
+                    fontWeight: "bold",
+                    color: "rgb(42 85 101)",
+                  }}
+                >
+                  Other user is typing...
+                </Typography>
+              ) : null}
+              {/* <p>{email}</p> */}
+            </div>
+            {/* <div>
+    <img src={ServiceIcon} alt="EnCircle" className="HomeIcon" />
+    </div> */}
+          </div>
           <List id="chat-window-messages">
             {listAllMessage}
             <ListItem ref={scrollRef}></ListItem>
@@ -69,16 +94,6 @@ function ChatInterface({
             />
           </IconButton>
         </Grid>
-        {isTyping ? (
-          <Typography
-            marginLeft={4}
-            style={{
-              fontSize: "2rem",
-            }}
-          >
-            Other user is typing ...{" "}
-          </Typography>
-        ) : null}
       </Grid>
     </>
   );

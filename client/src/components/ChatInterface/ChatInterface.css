@@ -4,11 +4,11 @@
 }
 
 #chat-window {
-  height: 46rem;
+  height: 50rem;
 }
 
 #chat-window-messages {
-  height: 43rem;
+  height: 39rem;
   overflow: auto;
 }
 
@@ -30,4 +30,43 @@
 
 .Chat {
   background-color: #9aced1;
+}
+
+.ChatAnonymousUserUserComponent {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  font-size: 3rem;
+  background: #d87272;
+  border-radius: 33px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.ChatAnonymousUserAvatarColumn {
+  flex: 0 0 auto; /* This prevents the AvatarColumn from flexing and maintains its original size */
+}
+
+.ChatAnonymousUserInfoColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.ChatAnonymousUserInfoColumn h2 {
+  font-size: 2.5rem;
+}
+
+/* You can add more styles as needed */
+.ChatAnonymousUserAvatarColumn > img {
+  height: 108px;
+  width: auto;
+  /* border-radius: 211px; */
+}
+
+@media screen and (min-width: 600px) {
+  .ChatAnonymousUserUserComponent {
+    font-size: 3rem;
+  }
 }

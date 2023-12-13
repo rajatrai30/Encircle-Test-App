@@ -302,7 +302,7 @@ function Chat(props) {
               p={3}
               className="flex flex-col justify-start items-center gap-16"
               style={{
-                height: "67rem",
+                height: "70rem",
                 width: "55rem",
                 background: "#d4a2a2",
                 borderRadius: "33px",
@@ -321,6 +321,7 @@ function Chat(props) {
                     msg={msg}
                     chatAlive={chatAlive}
                     isTyping={isTyping}
+                    secondUser={secondUser}
                   />
                   {/* Add a button to go back from the chat interface */}
                   <Button
