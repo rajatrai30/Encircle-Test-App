@@ -18,7 +18,7 @@ const createChat = async (socket, data, user) => {
 
     // const fcmTokenForSecondUser = "fAdKZe8f7-_7ZTeSOPnBnN:APA91bE6PeVwjosfcfp4M1OteHM-Za15x8nWIuQgSjxYSKJawN5OXcnzmjZMkiHaPmsSm7cZnzjs00X6Ag2Fhg268d6yBoqf3B5s1bGTz-4PISKxiX0SN9lu7f8tHWiJNvd-Jz3SCm5y";
     // const fcmTokenForSecondUser = "eBGJIgQfa4Jc4iPq06fDKu:APA91bHGeyOzW3xLGnxvVjTYYHlalqrHaMi1TkIym1mBRPrt1QCJN5u3UMDLJFIXkHz2QkeAf6p_NxP7q5mIDyhrDxzNA6CN5VIo_WMKpkaI4nb9sqDOF1KfGLe0GFX6REyKbx_j3dlM";
-    const fcmTokenForSecondUser = "fdR6xAeeabpLI5Lz-nBsLs:APA91bFs2ZJjIGwO536kMGL5BAwUlqjbUF9w-sV1CXioecVwHYnfVfE-A81tMwKVAGCeSJEZ7dWrQ98_FAE7lOxT2uClCKgrRWd8FBhZvu_ls1Fs8f8iVHNMpj8UThY-FPWJqimIjm4B";
+    const fcmTokenForSecondUser = "f8WIsWJ5Uj26jlvn9QvCo7:APA91bEOX2hcrFpfUYLvfmSZwKYim7w6J_Ia6y9M4FzDT2i9TtnyKOUup8y5FosnF2csIWiTg0GgtvzhyhFKv0lH5fClSmBg3URRqY0ZVmgD6Sw-6b6ibyszzn8Ep3nDbaiptGyCRWYb";
     // const fcmTokenForSecondUser = "e452G-Jn597hZJ4KTBrtgH:APA91bHLIsmxMVnFCEtJN6b5Nkmpa1POCG2hWQLoDYGyGeMPVsx1AUme2RvPN8uWIYnNXZYCoFhg0m7D8DR6EvtNnLbGNmTEjaHqxVm_8eFwwgIWUcS4FUbLfYc7E7rWyZS-WHFV_Fop";
     // const fcmTokenForSecondUser = await getFcmTokenBySocketId(userWithLocation.socketID);
 
@@ -32,7 +32,7 @@ const createChat = async (socket, data, user) => {
 
     console.log("fcmToken: ", fcmTokenForSecondUser);
 
-    // sendNotification(fcmTokenForSecondUser, titleToSecondUser, bodyToSecondUser, imageToSecondUser, IconToSecondUser, click_action);
+    sendNotification(fcmTokenForSecondUser, titleToSecondUser, bodyToSecondUser, imageToSecondUser, IconToSecondUser, click_action);
 
    
     //move both users from active to busy if it's the second user entering the room
