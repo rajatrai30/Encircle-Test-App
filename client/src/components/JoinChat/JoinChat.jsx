@@ -241,7 +241,10 @@ export const JoinChat = () => {
                             <MenuItem value="ML" style={{ fontSize: "2.5rem" }}>
                               ML
                             </MenuItem>
-                            <MenuItem value="ML" style={{ fontSize: "2.5rem" }}>
+                            <MenuItem
+                              value="Maths"
+                              style={{ fontSize: "2.5rem" }}
+                            >
                               Maths
                             </MenuItem>
                           </Select>
@@ -644,7 +647,7 @@ export const JoinChat = () => {
                               Flooring Installation
                             </MenuItem>
                             <MenuItem
-                              value="Emergency Electrical Services"
+                              value="Staircase Construction"
                               style={{ fontSize: "2.5rem" }}
                             >
                               Staircase Construction
@@ -912,10 +915,10 @@ export const JoinChat = () => {
                               Yoga Therapy
                             </MenuItem>
                             <MenuItem
-                              value="Online Yoga Classes:"
+                              value="Online Yoga Classes"
                               style={{ fontSize: "2.5rem" }}
                             >
-                              Online Yoga Classes:
+                              Online Yoga Classes
                             </MenuItem>
                           </Select>
                         </FormControl>
