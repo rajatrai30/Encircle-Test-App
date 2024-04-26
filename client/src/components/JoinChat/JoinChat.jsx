@@ -136,16 +136,31 @@ export const JoinChat = () => {
     //   return false;
     // }
     const uniqueSubjects = [...new Set(subjects)]; // Get unique subjects
-    if (uniqueSubjects.length !== maxSubjects) {
-      alert("Please select three different sub-services.");
+    // proivde code to detect identical subjects
+    // console.log(uniqueSubjects);
+    if (uniqueSubjects.length !== subjects.length) {
+      alert("Duplicate sub-servcies are not allowed.");
       return false;
     }
 
-    // Check if time and degree are filled
-    if (time.trim() === "" || degree.trim() === "") {
+    // if (uniqueSubjects.length !== maxSubjects) {
+    //   alert("Please select three different sub-services.");
+    //   return false;
+    // }
+
+    // Check if subject, time and degree are filled
+    if (
+      subjects.some((subject) => subject.trim() === "") ||
+      time.trim() === "" ||
+      degree.trim() === ""
+    ) {
       alert("Please fill in all required fields.");
       return false;
     }
+    // if (time.trim() === "" || degree.trim() === "") {
+    //   alert("Please fill in all required fields.");
+    //   return false;
+    // }
     return true;
   };
 
@@ -190,7 +205,7 @@ export const JoinChat = () => {
               {serviceName === "tutor" && (
                 <>
                   <div className="flex flex-col justify-start items-start gap-2 my-2">
-                    {[...Array(maxSubjects)].map((_, index) => (
+                    {subjects.map((_, index) => (
                       <div
                         key={index}
                         className="flex flex-col justify-start items-start gap-2 my-2"
@@ -247,10 +262,41 @@ export const JoinChat = () => {
                             >
                               Maths
                             </MenuItem>
+                            <MenuItem
+                              value="English"
+                              style={{ fontSize: "2.5rem" }}
+                            >
+                              English
+                            </MenuItem>
+                            <MenuItem
+                              value="Science"
+                              style={{ fontSize: "2.5rem" }}
+                            >
+                              Science
+                            </MenuItem>
+                            <MenuItem
+                              value="Biology"
+                              style={{ fontSize: "2.5rem" }}
+                            >
+                              Biology
+                            </MenuItem>
                           </Select>
                         </FormControl>
                       </div>
                     ))}
+                    {subjects.length < maxSubjects && (
+                      <IconButton onClick={addSubject}>
+                        <AddIcon
+                          style={{
+                            background: "#1976d2",
+                            color: "white",
+                            borderRadius: "60px",
+                            height: "60px",
+                            width: "60px",
+                          }}
+                        />
+                      </IconButton>
+                    )}
                   </div>
                   <div className="flex flex-col justify-start items-start gap-8 my-6">
                     <FormControl fullWidth>
@@ -318,7 +364,7 @@ export const JoinChat = () => {
               {serviceName === "plumber" && (
                 <>
                   <div className="flex flex-col justify-start items-start gap-2 my-2">
-                    {[...Array(maxSubjects)].map((_, index) => (
+                    {subjects.map((_, index) => (
                       <div
                         key={index}
                         className="flex flex-col justify-start items-start gap-2 my-2"
@@ -382,6 +428,19 @@ export const JoinChat = () => {
                         </FormControl>
                       </div>
                     ))}
+                    {subjects.length < maxSubjects && (
+                      <IconButton onClick={addSubject}>
+                        <AddIcon
+                          style={{
+                            background: "#1976d2",
+                            color: "white",
+                            borderRadius: "60px",
+                            height: "60px",
+                            width: "60px",
+                          }}
+                        />
+                      </IconButton>
+                    )}
                   </div>
                   <div className="flex flex-col justify-start items-start gap-8 my-6">
                     <FormControl fullWidth>
@@ -458,7 +517,7 @@ export const JoinChat = () => {
               {serviceName === "electrician" && (
                 <>
                   <div className="flex flex-col justify-start items-start gap-2 my-2">
-                    {[...Array(maxSubjects)].map((_, index) => (
+                    {subjects.map((_, index) => (
                       <div
                         key={index}
                         className="flex flex-col justify-start items-start gap-2 my-2"
@@ -522,6 +581,19 @@ export const JoinChat = () => {
                         </FormControl>
                       </div>
                     ))}
+                    {subjects.length < maxSubjects && (
+                      <IconButton onClick={addSubject}>
+                        <AddIcon
+                          style={{
+                            background: "#1976d2",
+                            color: "white",
+                            borderRadius: "60px",
+                            height: "60px",
+                            width: "60px",
+                          }}
+                        />
+                      </IconButton>
+                    )}
                   </div>
                   <div className="flex flex-col justify-start items-start gap-8 my-6">
                     <FormControl fullWidth>
@@ -598,7 +670,7 @@ export const JoinChat = () => {
               {serviceName === "carpenter" && (
                 <>
                   <div className="flex flex-col justify-start items-start gap-2 my-2">
-                    {[...Array(maxSubjects)].map((_, index) => (
+                    {subjects.map((_, index) => (
                       <div
                         key={index}
                         className="flex flex-col justify-start items-start gap-2 my-2"
@@ -656,6 +728,19 @@ export const JoinChat = () => {
                         </FormControl>
                       </div>
                     ))}
+                    {subjects.length < maxSubjects && (
+                      <IconButton onClick={addSubject}>
+                        <AddIcon
+                          style={{
+                            background: "#1976d2",
+                            color: "white",
+                            borderRadius: "60px",
+                            height: "60px",
+                            width: "60px",
+                          }}
+                        />
+                      </IconButton>
+                    )}
                   </div>
                   <div className="flex flex-col justify-start items-start gap-8 my-6">
                     <FormControl fullWidth>
@@ -732,7 +817,7 @@ export const JoinChat = () => {
               {serviceName === "maid" && (
                 <>
                   <div className="flex flex-col justify-start items-start gap-2 my-2">
-                    {[...Array(maxSubjects)].map((_, index) => (
+                    {subjects.map((_, index) => (
                       <div
                         key={index}
                         className="flex flex-col justify-start items-start gap-2 my-2"
@@ -790,6 +875,19 @@ export const JoinChat = () => {
                         </FormControl>
                       </div>
                     ))}
+                    {subjects.length < maxSubjects && (
+                      <IconButton onClick={addSubject}>
+                        <AddIcon
+                          style={{
+                            background: "#1976d2",
+                            color: "white",
+                            borderRadius: "60px",
+                            height: "60px",
+                            width: "60px",
+                          }}
+                        />
+                      </IconButton>
+                    )}
                   </div>
                   <div className="flex flex-col justify-start items-start gap-8 my-6">
                     <FormControl fullWidth>
@@ -866,7 +964,7 @@ export const JoinChat = () => {
               {serviceName === "yoga" && (
                 <>
                   <div className="flex flex-col justify-start items-start gap-2 my-2">
-                    {[...Array(maxSubjects)].map((_, index) => (
+                    {subjects.map((_, index) => (
                       <div
                         key={index}
                         className="flex flex-col justify-start items-start gap-2 my-2"
@@ -924,6 +1022,19 @@ export const JoinChat = () => {
                         </FormControl>
                       </div>
                     ))}
+                    {subjects.length < maxSubjects && (
+                      <IconButton onClick={addSubject}>
+                        <AddIcon
+                          style={{
+                            background: "#1976d2",
+                            color: "white",
+                            borderRadius: "60px",
+                            height: "60px",
+                            width: "60px",
+                          }}
+                        />
+                      </IconButton>
+                    )}
                   </div>
                   <div className="flex flex-col justify-start items-start gap-8 my-6">
                     <FormControl fullWidth>
